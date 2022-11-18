@@ -10,6 +10,15 @@ body, * {
 ::-webkit-scrollbar {
   width: 0px;
 }
+.logo img{
+  border-radius: 50%;
+  height: 45px;
+  width: 45px;
+}
+.logo p{
+  padding: 0px 10px;
+}
+.logo
 
 a {
   color: inherit;
@@ -67,6 +76,8 @@ width: 100%;
 .logo{
   color: gray;
   font-size: 18px;
+  display: flex;
+  flex-direction: row;
 
 }
 .cart-icon{

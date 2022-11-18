@@ -5,10 +5,12 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Product, FooterBanner, HeroBanner } from '../components';
 
-import Link from 'next/link';
+
+
 
 
 const Home = ({ products, bannerData }) => {
+  
  
  return(
     <div>
@@ -18,6 +20,7 @@ const Home = ({ products, bannerData }) => {
     <div className="products-heading">
       <h2>Best Seller Products</h2>
       <p>speaker There are many variations passages</p>
+      
     </div>
     
 

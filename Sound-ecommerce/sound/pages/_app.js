@@ -1,18 +1,23 @@
 import React from 'react';
 import { Display } from '../components';
 import '../styles/globals.css';
+import { StateContext } from '../context/StateContext';
+import { UserProvider } from '@auth0/nextjs-auth0';
 
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   return (
-    
-   <Display>
-     <Component {...pageProps} />
-   </Display>
    
+    <StateContext>
+      <Display>
+      
+         <Component {...pageProps} />
      
+      </Display>
+      
+    </StateContext>
+    
+   
 
-  )
+  );
 }
-
-export default MyApp

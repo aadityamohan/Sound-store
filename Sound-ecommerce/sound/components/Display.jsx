@@ -9,7 +9,10 @@ const Display = ({children}) => {
    
 
 <div className="layout">
-      
+      <Head>
+        <title>Sound Store</title>
+      </Head>
+
       <header>
         <Navbar />
       </header>

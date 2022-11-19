@@ -4,6 +4,7 @@ import { BsBagCheckFill } from 'react-icons/bs';
 
 import { useStateContext } from '../context/StateContext';
 import { runFireworks } from '../lib/utils';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const Success = () => {
      const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
@@ -14,6 +15,7 @@ const Success = () => {
     setTotalQuantities(0);
     runFireworks();
   }, []);
+  const{user, isLoading, error} = useUser();
   return (
    <>
     <Link href="/">
@@ -25,7 +27,7 @@ const Success = () => {
         <p className="icon">
           <BsBagCheckFill />
         </p>
-          <h2>Thank you for ordering from us!</h2>
+          <h2>Thank you {user?.name} for ordering!</h2>
           <p className="email-msg">Check your email inbox for the receipt.</p>
           <p className="description">
           If you have any questions, please email

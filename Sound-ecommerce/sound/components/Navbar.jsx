@@ -12,6 +12,8 @@ const Navbar = () => {
   
   
   const { showCart, setShowCart, totalQuantities } = useStateContext();
+  const{user, isLoading, error} = useUser();
+
     return (
       <div className="navbar-container">
         <p className="logo">
@@ -24,9 +26,17 @@ const Navbar = () => {
         </button>
        {showCart && <Cart />}
 
-    
-      <a className='logo' href='/api/auth/login'>Login </a>
-      
+       <div className= "logo">
+      {user ? (
+        <>
+        {/*<img className='userpicture' src={user.picture}></img>*/}
+        <p className='username'>{user.name}</p>
+        <a href='/api/auth/logout'>Logout </a>
+        </>
+        ) : (
+          <a href='/api/auth/login'>Login </a>
+        )}
+         </div>
         
 
       </div>

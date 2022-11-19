@@ -3,36 +3,32 @@ import { client } from '../lib/client';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { Product, FooterBanner, HeroBanner } from '../components';
+import { Product, FooterBanner, HeroBanner, Trending } from '../components';
+import Link from 'next/link';
 
 
-
-
-
-const Home = ({ products, bannerData }) => {
-  
- 
+const Home = ({ products, bannerData, trending }) => {
+   
  return(
     <div>
   
     <HeroBanner heroBanner={bannerData[1]} />
 
     <div className="products-heading">
-      <h2>Best Seller Products</h2>
-      <p>speaker There are many variations passages</p>
-      
+      <h2>Trending Products</h2>
+      <h3>Best in the Market</h3>
     </div>
     
-
     <div className="products-container">
-      {products?.map((product) => <Product key={product._id} product={product} />)}
+      {trending?.map((trending) => <Trending trending={trending} />)}
     </div>
-  
-    
-    <FooterBanner footerBanner={ bannerData[0]} />
 
-
-
+   
+    <Link href="/Products">
+    <button  className='allbutton' type='button' > View all Products </button>
+    </Link>
+   
+    <FooterBanner footerBanner={bannerData[0]} />
 
     </div>
  )
@@ -44,9 +40,13 @@ const Home = ({ products, bannerData }) => {
   
     const bannerQuery = '*[_type == "banner"]';
     const bannerData = await client.fetch(bannerQuery);
+
+    const trendingQuery = '*[_type == "trending"]';
+    const trending = await client.fetch(trendingQuery);
+  
   
     return {
-      props: { products, bannerData }
+      props: { products, bannerData, trending }
     }
 }
 
